@@ -25,3 +25,5 @@ Route::prefix('admin')->group(function () {
         Route::get('/{id}',[Blogs::class, 'delete'])->name('blog.remove');
     });
 });
+
+Route::get('/cate-search/{id}', [Blogs::class, 'cateSearch'])->name('cate.search');

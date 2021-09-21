@@ -5,12 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Blog</title>
+    <style>
+        .menu_ul{
+            justify-content: space-around;
+            flex-wrap: wrap;
+            align-content: space-around;
+        }
+        a{
+            text-decoration: none;
+        }
+        .category{
+            display: inline-block;
+            margin-left: 20px;
+        }
+    </style>
 </head>
 <body>
     <header>
         <button><a href="{{route('blog.add')}}">đăng bài</a></button>
         <div class="header">
             <h2 style="text-align:center">Tin tức trong ngày</h2>
+        </div>
+        <div>
+            <div class="menu">
+                <ul class="menu_ul">
+                    <li class="category"><a href="{{route('blog.list')}}">Tất cả</a></li>
+                    @foreach($category as $cate)
+                    <li class="category"><a href="{{route('cate.search', ['id'=>$cate->id])}}">{{$cate->name}}</a></li>
+                    @endforeach
+                </ul>
+            </div>
         </div>
     </header>
     <div class="content">

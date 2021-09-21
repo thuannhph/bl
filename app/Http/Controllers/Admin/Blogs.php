@@ -11,8 +11,14 @@ use App\Http\Requests\BlogRequest;
 class Blogs extends Controller
 {
     public function index(){
+        $category = Category::all();
         $blogs = Blog::all();
-        return view('client.blog', compact('blogs'));
+        return view('client.blog', compact('blogs', 'category'));
+    }
+    public function cateSearch($id){
+        $category = Category::all();
+        $blogs = Blog::all()->where('cate_id', $id);
+        return view('client.blog', compact('blogs', 'category'));
     }
     public function formAdd(){
         $category = Category::all();
